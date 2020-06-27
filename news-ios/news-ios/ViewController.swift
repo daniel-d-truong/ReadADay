@@ -10,11 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    
+    @IBAction func buttonOnClick(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabController") as! UITabBarController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 
 }
 

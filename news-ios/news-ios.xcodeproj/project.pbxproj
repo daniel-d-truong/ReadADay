@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBEDDE7324A7FDC100252979 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE7224A7FDC100252979 /* FeedTableViewController.swift */; };
+		CBEDDE7724A7FFA400252979 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE7624A7FFA400252979 /* MainTabBarController.swift */; };
+		CBEDDE7924A7FFE200252979 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE7824A7FFE200252979 /* ProfileViewController.swift */; };
+		CBEDDE7C24A801D600252979 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE7B24A801D600252979 /* FeedTableViewCell.swift */; };
 		CBFED65B24A7EFEA0097B2A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65A24A7EFEA0097B2A2 /* AppDelegate.swift */; };
 		CBFED65D24A7EFEA0097B2A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65C24A7EFEA0097B2A2 /* SceneDelegate.swift */; };
 		CBFED65F24A7EFEA0097B2A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65E24A7EFEA0097B2A2 /* ViewController.swift */; };
@@ -35,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CBEDDE7224A7FDC100252979 /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		CBEDDE7624A7FFA400252979 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		CBEDDE7824A7FFE200252979 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CBEDDE7B24A801D600252979 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		CBFED65724A7EFEA0097B2A2 /* news-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "news-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFED65A24A7EFEA0097B2A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBFED65C24A7EFEA0097B2A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CBEDDE7A24A801C100252979 /* FeedTable */ = {
+			isa = PBXGroup;
+			children = (
+				CBEDDE7224A7FDC100252979 /* FeedTableViewController.swift */,
+				CBEDDE7B24A801D600252979 /* FeedTableViewCell.swift */,
+			);
+			path = FeedTable;
+			sourceTree = "<group>";
+		};
 		CBFED64E24A7EFEA0097B2A2 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +116,7 @@
 		CBFED65924A7EFEA0097B2A2 /* news-ios */ = {
 			isa = PBXGroup;
 			children = (
+				CBEDDE7A24A801C100252979 /* FeedTable */,
 				CBFED65A24A7EFEA0097B2A2 /* AppDelegate.swift */,
 				CBFED65C24A7EFEA0097B2A2 /* SceneDelegate.swift */,
 				CBFED65E24A7EFEA0097B2A2 /* ViewController.swift */,
@@ -106,6 +124,8 @@
 				CBFED66324A7EFEC0097B2A2 /* Assets.xcassets */,
 				CBFED66524A7EFEC0097B2A2 /* LaunchScreen.storyboard */,
 				CBFED66824A7EFEC0097B2A2 /* Info.plist */,
+				CBEDDE7624A7FFA400252979 /* MainTabBarController.swift */,
+				CBEDDE7824A7FFE200252979 /* ProfileViewController.swift */,
 			);
 			path = "news-ios";
 			sourceTree = "<group>";
@@ -259,9 +279,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBEDDE7924A7FFE200252979 /* ProfileViewController.swift in Sources */,
 				CBFED65F24A7EFEA0097B2A2 /* ViewController.swift in Sources */,
+				CBEDDE7C24A801D600252979 /* FeedTableViewCell.swift in Sources */,
 				CBFED65B24A7EFEA0097B2A2 /* AppDelegate.swift in Sources */,
+				CBEDDE7724A7FFA400252979 /* MainTabBarController.swift in Sources */,
 				CBFED65D24A7EFEA0097B2A2 /* SceneDelegate.swift in Sources */,
+				CBEDDE7324A7FDC100252979 /* FeedTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
