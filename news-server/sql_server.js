@@ -17,25 +17,55 @@ const config = {
 };
 
 const connection = new Connection(config);
+connection.on('debug', function(err) { console.log('debug:', err);});
 
 // Attempt to connect and execute queries if connection goes through
 connection.on("connect", err => {
   if (err) {
     console.error(err.message);
   } else {
-    queryDatabase();
+        submitReadEntry("joe", 11, 600);
+        queryDBForUserArticles("joe").then(out => {
+          console.log(out);
+        }).catch(err => {
+          console.log(err);
+        });
   }
 });
 
-function queryDatabase() {
-  console.log("Reading rows from the Table...");
+function queryDBForUserArticles(user) {
+  return new Promise(function(resolve, reject) {
+          console.log("Getting User Information...");
 
-  // Read all rows from table
+          let obj = [];
+          const request = new Request(
+            "".concat(`SELECT * FROM ReadArticles WHERE Username='`, user, `'`),
+            (err, rowCount) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(obj);
+                console.log(`${rowCount} row(s) returned`);
+              }
+            }
+          );
+
+          request.on("row", columns => {
+            let entry = {};
+            columns.forEach(column => {
+                entry[column.metadata.colName] = column.value;
+            });
+          });
+
+          connection.execSql(request);
+  });
+}
+
+function submitReadEntry(user, article, date) {
+  console.log("Putting a Read Entry...");
+
   const request = new Request(
-    `SELECT TOP 20 pc.Name as CategoryName,
-                   p.name as ProductName
-     FROM [SalesLT].[ProductCategory] pc
-     JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid`,
+    "".concat(`INSERT INTO ReadArticles(ArticleID, DateRead, Username) VALUES (`, article, `, `, date, `' `, user, `)`),
     (err, rowCount) => {
       if (err) {
         console.error(err.message);
@@ -45,11 +75,6 @@ function queryDatabase() {
     }
   );
 
-  request.on("row", columns => {
-    columns.forEach(column => {
-      console.log("%s\t%s", column.metadata.colName, column.value);
-    });
-  });
-
   connection.execSql(request);
 }
+
