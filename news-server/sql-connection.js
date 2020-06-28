@@ -3,12 +3,14 @@ const { Connection, Request } = require("tedious");
 //
 //  Select Queries
 //
-exports.selectArticlesForUser = (username) => runSelectQuery(`SELECT * FROM ReadArticles WHERE Username='${username}' ORDER BY DateRead DESC`);
+exports.selectArticlesForUser = (username) => runSelectQuery(`SELECT Articles.* FROM ReadArticles JOIN Articles ON Articles.ID = ReadArticles.ArticleID WHERE Username='${username}' ORDER BY DateRead DESC`);
+exports.selectArticlesAll = () => runSelectQuery(`SELECT * FROM Articles`);
 
 //
 //  Insert Queries
 //
 exports.insertReadArticlesEntry = (user, article, date) => runInsertQuery(`INSERT INTO ReadArticles(ArticleID, DateRead, Username) VALUES (${article}, ${date}, '${user}')`);
+exports.insertArticlesEntry = (title, articleURL, imageURL, date, category) => runInsertQuery(`INSERT INTO Articles(Title, ArticleURL, ImageURL, ArticleDate, Category) VALUES (${title}, ${articleURL}, ${imageURL}, ${date}, ${category})`);
 
 //
 //  Database Code
