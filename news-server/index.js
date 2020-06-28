@@ -79,6 +79,13 @@ app.post("/users/:username/readArticles", async (request, response) => {
         const { username } = request.params;
         const { ID: articleID } = request.body;
         const time = Date.now();
+        
+        const existingReadArticlesForUser = await selectArticlesForUser(username);
+        if(existingReadArticlesForUser.some(a => a.ID == articleID)) {
+            console.warn(`User ${username} has already read article with ID ${articleID}. Skipping.`)
+            response.send();
+            return;
+        }
 
         await insertReadArticlesEntry(username, articleID, time);
         response.send();
