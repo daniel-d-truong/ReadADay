@@ -56,7 +56,6 @@ class FeedTableViewController: UITableViewController {
         
         // Logic to fetch from backend
         func fetch() {
-            
             print("called fetch")
             
             if (AppGlobalState.username == nil) {
@@ -64,24 +63,30 @@ class FeedTableViewController: UITableViewController {
             }
             
             else {
-                articlesList.append(Article(url: "https://markmanson.net/best-articles", title: "Cat", imageSrc: "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", topic: "Animals"))
-                articlesList.append(Article(url: "https://markmanson.net/best-articles", title: "Cat", imageSrc: "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", topic: "Animals"))
-                articlesList.append(Article(url: "https://markmanson.net/best-articles", title: "Cat", imageSrc: "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", topic: "Animals"))
+                API.getArticlesFeed(self.setArticlesList)
             }
             
             print(self.articlesList.count)
-            self.tableView.reloadData()
         }
         
         fetch()
+    }
+    
+    func setArticlesList(_ articlesList: [Article]) {
+        self.articlesList = articlesList
+        self.tableView.reloadData()
     }
 
     /**
      * Login Section
      */
-    
     @IBAction func loginOnClick(_ sender: Any) {
         displayLoginAlert(controller: self, completion: fetchFromBackend)
+    }
+    
+    // Add Section
+    @IBAction func addOnClick(_ sender: Any) {
+        displaySubmitArticle(controller: self, completion: {})
     }
     
     
