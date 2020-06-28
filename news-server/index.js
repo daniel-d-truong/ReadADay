@@ -9,7 +9,7 @@ const { categorize_article } = require("./key-phrases");
 const app = express();
 app.use(bodyParser.json({ strict: false, type: "*/*" }));
 
-const serverPort = 8000;
+const serverPort = process.env.PORT || 8000;
 const STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS = 36;
 
 //
