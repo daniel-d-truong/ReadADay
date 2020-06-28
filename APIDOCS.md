@@ -39,7 +39,7 @@
 
 - The `Date` field in the response should be rendered with a library similar to `Moment.js`.
 
-### ✳️ **PUT** `/articles`: Submits a New Article
+### ✳️ **POST** `/articles`: Submits a New Article
 
 **Request Body:**
 
