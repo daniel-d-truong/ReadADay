@@ -68,6 +68,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcX-W2-INi" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="134" width="414" height="193"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-Hb-l71">
                                 <rect key="frame" x="169" y="408" width="76" height="28"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
@@ -119,35 +123,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcX-W2-INi" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="87" y="171" width="240" height="128"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="66" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-AX-RMw">
-                                        <rect key="frame" x="-87" y="40" width="414" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="66" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-AX-RMw">
+                                <rect key="frame" x="0.0" y="190" width="414" height="47"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6eA-BG-tTz" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="5JQ-rD-Xrb"/>
                             <constraint firstItem="fWo-Hb-l71" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" constant="169" id="9cc-7Q-mBq"/>
                             <constraint firstItem="y4c-gC-Mzx" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" constant="119" id="BUI-za-uPc"/>
+                            <constraint firstItem="S2a-AX-RMw" firstAttribute="trailing" secondItem="fID-wo-MuL" secondAttribute="trailing" id="F6I-6g-rd1"/>
                             <constraint firstItem="y4c-gC-Mzx" firstAttribute="top" secondItem="fID-wo-MuL" secondAttribute="top" constant="22" id="KQ8-gE-dzB"/>
                             <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="6eA-BG-tTz" secondAttribute="trailing" id="Mm7-dp-bCl"/>
                             <constraint firstItem="HfY-SU-pRr" firstAttribute="trailing" secondItem="fID-wo-MuL" secondAttribute="trailing" id="NV6-Qr-LV0"/>
                             <constraint firstItem="HfY-SU-pRr" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="QhN-Yp-lIV"/>
-                            <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="jcX-W2-INi" secondAttribute="trailing" constant="87" id="SD0-E8-g9P"/>
+                            <constraint firstItem="S2a-AX-RMw" firstAttribute="top" secondItem="y4c-gC-Mzx" secondAttribute="bottom" constant="56" id="RL0-On-bI9"/>
+                            <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="jcX-W2-INi" secondAttribute="trailing" id="SD0-E8-g9P"/>
                             <constraint firstItem="fID-wo-MuL" firstAttribute="bottom" secondItem="HfY-SU-pRr" secondAttribute="bottom" constant="16" id="a2u-Vd-8Db"/>
+                            <constraint firstItem="S2a-AX-RMw" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="bA8-wL-Rkr"/>
                             <constraint firstItem="fWo-Hb-l71" firstAttribute="top" secondItem="6eA-BG-tTz" secondAttribute="bottom" constant="60" id="hjK-3q-aM6"/>
-                            <constraint firstItem="jcX-W2-INi" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" constant="87" id="ig7-yv-OC8"/>
-                            <constraint firstItem="jcX-W2-INi" firstAttribute="top" secondItem="y4c-gC-Mzx" secondAttribute="bottom" constant="37" id="kL1-Fb-mj7"/>
-                            <constraint firstItem="6eA-BG-tTz" firstAttribute="top" secondItem="jcX-W2-INi" secondAttribute="bottom" constant="28" id="kZK-9A-MfL"/>
+                            <constraint firstItem="jcX-W2-INi" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="ig7-yv-OC8"/>
+                            <constraint firstItem="jcX-W2-INi" firstAttribute="top" secondItem="y4c-gC-Mzx" secondAttribute="bottom" id="kL1-Fb-mj7"/>
+                            <constraint firstItem="6eA-BG-tTz" firstAttribute="top" secondItem="jcX-W2-INi" secondAttribute="bottom" id="kZK-9A-MfL"/>
                             <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="fWo-Hb-l71" secondAttribute="trailing" constant="169" id="lLf-4b-qnS"/>
                             <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="y4c-gC-Mzx" secondAttribute="trailing" constant="118" id="mec-VF-hLK"/>
                             <constraint firstItem="HfY-SU-pRr" firstAttribute="top" secondItem="fWo-Hb-l71" secondAttribute="bottom" constant="17" id="vMc-c8-lM8"/>

@@ -29,8 +29,6 @@ class ProfileViewController: UIViewController {
         userLabel.text = AppGlobalState.username
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,9 +42,7 @@ class ProfileViewController: UIViewController {
         API.getUserInfo(completion: setStreak)
         self.fetchUserHistory()
         
-        
-            
-        
+        pieChartView.sizeToFit()
     }
     
     func fetchUserHistory() {
@@ -66,13 +62,20 @@ class ProfileViewController: UIViewController {
     }
     
     func setUpPieChart() {
+        // animate
+        pieChartView.animate(xAxisDuration: 2, easingOption: .easeOutBack)
+        pieChartView.animate(yAxisDuration: 2, easingOption: .easeOutBack)
+        
         civilRightsDataEntry.value = Double(Article.getAllArticlesWith(category: "civil rights", list: self.articlesHistory).count)
+        civilRightsDataEntry.label = "Civil Rights"
         
         sustainabilityDataEntry.value = Double(Article.getAllArticlesWith(category: "sustainability", list: self.articlesHistory).count)
+        sustainabilityDataEntry.label = "Substainability"
         
         healthDataEntry.value = Double(Article.getAllArticlesWith(category: "health", list: self.articlesHistory).count)
+        healthDataEntry.label = "Health"
         
-        pieChartView.chartDescription?.text = "Category Breakdown"
+        pieChartView.chartDescription?.text = ""
         chartEntries = [civilRightsDataEntry, sustainabilityDataEntry, healthDataEntry]
         
         updateChartData()
