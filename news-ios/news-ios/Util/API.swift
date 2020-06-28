@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 //let backendURL = "http://localhost:8000";
-let backendURL = "http://essentials.ngrok.mathvav.com.ngrok.io"
+let backendURL = "https://read-a-day-api.herokuapp.com"
 
 class APIFunctions {
     
