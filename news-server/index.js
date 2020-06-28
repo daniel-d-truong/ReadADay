@@ -1,75 +1,147 @@
-  
 const express = require("express");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
+const moment = require("moment");
+
+const { selectArticlesAll, selectArticlesForUser, selectReadArticlesTimesForUser, insertArticlesEntry, insertReadArticlesEntry } = require("./sql-connection");
+const { article_info } = require("./web-scraping");
+const { categorize_article } = require("./key-phrases");
 
 const app = express();
 app.use(bodyParser.json({ strict: false, type: "*/*" }));
 
 const serverPort = 8000;
-
-const demoArticleData = {
-    "Articles": [
-        {
-            "ID": 12345,
-            "Title": "Some Title Here",
-            "URL": "https://example.com/",
-            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
-            "Date": "25 mins ago",
-            "Category": "health"
-        },
-        {
-            "ID": 67890,
-            "Title": "Some Title Here adsfffffffffffdf asdfffffffffffffff",
-            "URL": "https://example.org/",
-            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
-            "Date": "1 hour ago",
-            "Category": "sustainability"
-        },
-        {
-            "ID": 67895,
-            "Title": "Some Title Here",
-            "URL": "https://example.org/",
-            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
-            "Date": "1 hour ago",
-            "Category": "civil rights"
-        }
-    ]
-};
+const STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS = 36;
 
 //
 //  Articles Collection
 //
-app.get("/articles", (request, response) => {
-    response.send(
-        demoArticleData
-    );
+app.get("/articles", async (request, response) => {
+    console.log(`[REQUEST] GET /articles`)
+    try {
+        response.send({
+            Articles: formatArticles(await selectArticlesAll())
+        });
+    } catch (e) {
+        console.error(e);
+        response.status(500).end();
+    }
 });
 
-app.post("/articles", (request, response) => {
-    const { URL: url, Username: username } = request.body;
-    response.send(`[NOT YET IMPLEMENTED] Added article with URL ${url} and marked as read for user ${username}.`);
+app.post("/articles", async (request, response) => {
+    console.log(`[REQUEST] POST /articles`)
+    try {
+        const { URL: articleURL, Username: username } = request.body;
+        const { title, imageURL, date, category } = await getDataAboutArticle(articleURL);
+
+        await insertArticlesEntry(title, articleURL, imageURL, date, category);
+        response.send();
+    } catch (e) {
+        console.error(e);
+        response.status(500).end();
+    }
 });
 
-// 
+// 
 //  Users Collection
 //
-app.get("/users/:username/info", (request, response) => {
-    response.send({
-        StreakInDays: 3
-    });
+app.get("/users/:username/info", async (request, response) => {
+    console.log(`[REQUEST] GET /users/:username/info`)
+    try {
+        const { username } = request.params;
+
+        const x = await selectReadArticlesTimesForUser(username);
+
+        console.log(x);
+
+        response.send({ StreakInDays: calculateStreak(x) });
+    } catch (e) {
+        console.error(e);
+        response.status(500).end();
+    }
 });
 
-app.get("/users/:username/readArticles", (request, response) => {
-    response.send(demoArticleData);
+app.get("/users/:username/readArticles", async (request, response) => {
+    console.log(`[REQUEST] GET /users/:username/readArticles`)
+    try {
+        const { username } = request.params;
+        response.send({
+            Articles: formatArticles(await selectArticlesForUser(username))
+        });
+    } catch (e) {
+        console.error(e);
+        response.status(500).end();
+    }
 });
 
-app.post("/users/:username/readArticles", (request, response) => {
-    const {username} = request.params;
-    const {ID: articleID} = request.body;
-    response.send(`[NOT YET IMPLEMENTED] Marked article with ID ${articleID} as read for user ${username}.`);
+app.post("/users/:username/readArticles", async (request, response) => {
+    console.log(`[REQUEST] POST /users/:username/readArticles`)
+    try {
+        const { username } = request.params;
+        const { ID: articleID } = request.body;
+        const time = Date.now();
+        
+        const existingReadArticlesForUser = await selectArticlesForUser(username);
+        if(existingReadArticlesForUser.some(a => a.ID == articleID)) {
+            console.warn(`User ${username} has already read article with ID ${articleID}. Skipping.`)
+            response.send();
+            return;
+        }
+
+        await insertReadArticlesEntry(username, articleID, time);
+        response.send();
+    } catch (e) {
+        console.error(e);
+        response.status(500).end();
+    }
 });
 
 //
 //  Start Server
 //
 app.listen(serverPort, () => console.log(`Server started on port ${serverPort}!`));
+
+//
+//  Utilities
+//
+const getDataAboutArticle = async (url) => {
+    const [title, imageURL] = await article_info(url);
+    const category = await categorize_article(url);
+
+    return {
+        title,
+        imageURL,
+        category,
+        date: Date.now()
+    };
+}
+
+const calculateStreak = (timestamps) => {/////////////////////////////////////////////////////////////////////////////////////////
+    timestamps = timestamps.map(t => t.DateRead / 1000);
+    timestamps.unshift(Date.now() / 1000);
+
+    const timestampDiffs = timestamps.slice(1).map((t, i) => timestamps[i] - t);
+
+    for (let i = 1; i < timestampDiffs.length; i++) {
+        if (timestampDiffs[i] >= STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS * 60 * 60) {
+            const timeStreakStarted = moment.unix(timestamps[i - 1]);
+            console.log(timestamps[i - 1]);
+            console.log(timeStreakStarted);
+        }
+    }
+
+    return 4;
+}
+
+const formatArticles = (articles) => {
+    return articles.map(article => {
+        article.Date = moment.unix(article.ArticleDate / 1000).fromNow();
+        delete article.ArticleDate;
+
+        article.URL = article.ArticleURL;
+        delete article.ArticleURL;
+
+        article.Category = article.Category.toLowerCase();
+
+        return article;
+    });
+};
