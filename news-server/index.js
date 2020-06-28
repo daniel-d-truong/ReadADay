@@ -16,7 +16,7 @@ const STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS = 36;
 //  Articles Collection
 //
 app.get("/articles", async (request, response) => {
-    console.log(`>>> GET "/articles"`)
+    console.log(`[REQUEST] GET /articles`)
     try {
         response.send({
             Articles: formatArticles(await selectArticlesAll())
@@ -28,7 +28,7 @@ app.get("/articles", async (request, response) => {
 });
 
 app.post("/articles", async (request, response) => { 
-    console.log(`>>> POST "/articles"`)
+    console.log(`[REQUEST] POST /articles`)
     try {
         const { URL: articleURL, Username: username } = request.body;
         const { title, imageURL, date, category } = await getDataAboutArticle(articleURL);
@@ -45,7 +45,7 @@ app.post("/articles", async (request, response) => {
 //  Users Collection
 //
 app.get("/users/:username/info", async (request, response) => {
-    console.log(`>>> GET "/users/:username/info"`)
+    console.log(`[REQUEST] GET /users/:username/info`)
     try {
         const { username } = request.params;
 
@@ -61,7 +61,7 @@ app.get("/users/:username/info", async (request, response) => {
 });
 
 app.get("/users/:username/readArticles", async (request, response) => {
-    console.log(`>>> GET "/users/:username/readArticles"`)
+    console.log(`[REQUEST] GET /users/:username/readArticles`)
     try {
         const { username } = request.params;
         response.send({
@@ -74,7 +74,7 @@ app.get("/users/:username/readArticles", async (request, response) => {
 });
 
 app.post("/users/:username/readArticles", async (request, response) => {
-    console.log(`>>> POST "/users/:username/readArticles"`)
+    console.log(`[REQUEST] POST /users/:username/readArticles`)
     try {
         const {username} = request.params;
         const {ID: articleID} = request.body;
@@ -92,7 +92,6 @@ app.post("/users/:username/readArticles", async (request, response) => {
 //  Start Server
 //
 app.listen(serverPort, () => console.log(`Server started on port ${serverPort}!`));
-
 
 //
 //  Utilities

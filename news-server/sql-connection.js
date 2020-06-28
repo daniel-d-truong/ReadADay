@@ -5,7 +5,7 @@ const { Connection, Request } = require("tedious");
 //
 exports.selectArticlesAll = () => runSelectQuery(`SELECT * FROM Articles`);
 exports.selectArticlesForUser = (username) => runSelectQuery(`SELECT Articles.* FROM ReadArticles JOIN Articles ON Articles.ID = ReadArticles.ArticleID WHERE Username='${username}' ORDER BY DateRead DESC`);
-exports.selectReadArticlesTimesForUser = (username) => runSelectQuery(`SELECT DateRead from ReadArticles ORDER BY DateRead DESC`);
+exports.selectReadArticlesTimesForUser = () => runSelectQuery(`SELECT DateRead from ReadArticles ORDER BY DateRead DESC`);
 
 //
 //  Insert Queries
@@ -96,3 +96,9 @@ const runInsertQuery = (query) => {
 		});
 	});
 }
+
+const run = () => {
+	runInsertQuery(`TRUNCATE TABLE ReadArticles`).catch(console.error);
+	runInsertQuery(`TRUNCATE TABLE Articles`).catch(console.error);
+};
+run();
