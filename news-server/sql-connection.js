@@ -3,12 +3,12 @@ const { Connection, Request } = require("tedious");
 //
 //  Select Queries
 //
-const selectArticlesForUser = (user) => runSelectQuery(`SELECT * FROM ReadArticles WHERE Username='${user}'`);
+exports.selectArticlesForUser = (username) => runSelectQuery(`SELECT * FROM ReadArticles WHERE Username='${username}' ORDER BY DateRead DESC`);
 
 //
 //  Insert Queries
 //
-const insertReadArticlesEntry = (user, article, date) => runInsertQuery(`INSERT INTO ReadArticles(ArticleID, DateRead, Username) VALUES (${article}, ${date}, '${user}')`);
+exports.insertReadArticlesEntry = (user, article, date) => runInsertQuery(`INSERT INTO ReadArticles(ArticleID, DateRead, Username) VALUES (${article}, ${date}, '${user}')`);
 
 //
 //  Database Code
@@ -47,7 +47,6 @@ const runSelectQuery = (query) => {
 					if (err) {
 						reject(err);
 					} else {
-						console.log(`${rowCount} row(s) returned`);
 						resolve(arr);
 					}
 
@@ -83,7 +82,7 @@ const runInsertQuery = (query) => {
 
 			const request = new Request(
 				query,
-				(err, rowCount) => {
+				(err) => {
 					if (err) {
 						reject(err.message);
 					} else {
@@ -98,16 +97,3 @@ const runInsertQuery = (query) => {
 		});
 	});
 }
-
-
-// insertReadArticlesEntry("joe", 11, 600).then(out => {
-// 	console.log("Success!");
-// }).catch(err => {
-// 	console.log(err);
-// });
-
-// queryDBForUserArticles("joe").then(out => {
-// 	console.log(out);
-// }).catch(err => {
-// 	console.log(err);
-// });
