@@ -12,12 +12,12 @@ class Article {
     var url: String
     var title: String
     var imageSrc: String
-    var topic: String
+    var category: String
     
-    init(url: String, title: String, imageSrc: String, topic: String) {
+    init(url: String, title: String, imageSrc: String, category: String) {
         self.url = url
         self.title = title
         self.imageSrc = imageSrc
-        self.topic = topic
+        self.category = category
     }
 }

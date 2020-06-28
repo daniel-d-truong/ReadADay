@@ -1,5 +1,5 @@
 //
-//  FeedTableViewCell.swift
+//  HistoryTableViewCell.swift
 //  news-ios
 //
 //  Created by Daniel Truong on 6/27/20.
@@ -8,14 +8,10 @@
 
 import UIKit
 
-class FeedTableViewCell: UITableViewCell {
+class HistoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var articleTitle: UILabel!
-    @IBOutlet weak var articleSource: UILabel!
-    @IBOutlet weak var articleTopic: UILabel!
-    
-    var article: Article!
+    @IBOutlet weak var articleCategory: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,10 +25,8 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     func setCell(article: Article) {
-        articleImage.loadURL(url: URL(string: article.imageSrc)!)
-        articleTitle.text = article.title
-        articleSource.text = article.url
-        articleTopic.text = article.category
+        self.articleTitle.text = article.title
+        self.articleCategory.text = article.category
     }
 
 }
