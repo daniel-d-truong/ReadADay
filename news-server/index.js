@@ -60,6 +60,7 @@ app.get("/users/:username/readArticles", async (request, response) => {
     console.log(`[REQUEST] GET /users/:username/readArticles`)
     try {
         const { username } = request.params;
+
         response.send({
             Articles: formatArticles(await selectArticlesForUser(username))
         });
@@ -73,6 +74,7 @@ app.post("/users/:username/readArticles", async (request, response) => {
     console.log(`[REQUEST] POST /users/:username/readArticles`)
     try {
         const { username } = request.params;
+
         const { ID: articleID } = request.body;
         const time = Date.now();
         

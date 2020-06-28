@@ -3,7 +3,7 @@ const { Connection, Request } = require("tedious");
 //
 //  Select Queries
 //
-exports.selectArticlesAll = () => runSelectQuery(`SELECT * FROM Articles`);
+exports.selectArticlesAll = () => runSelectQuery(`SELECT * FROM Articles ORDER BY ArticleDate DESC`);
 exports.selectArticlesForUser = (username) => runSelectQuery(`SELECT Articles.* FROM ReadArticles JOIN Articles ON Articles.ID = ReadArticles.ArticleID WHERE Username='${username}' ORDER BY ReadArticles.DateRead DESC`);
 exports.selectReadArticlesTimesForUser = () => runSelectQuery(`SELECT DateRead from ReadArticles ORDER BY DateRead DESC`);
 
