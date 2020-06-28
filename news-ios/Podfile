@@ -7,6 +7,7 @@ target 'news-ios' do
 
   # Pods for news-ios
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'Charts'
 
   target 'news-iosTests' do
     inherit! :search_paths

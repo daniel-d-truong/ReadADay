@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import Charts
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var streakNumber: UILabel!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pieChartView: PieChartView!
     
     var articlesHistory: [Article] = []
+    
+    var civilRightsDataEntry = PieChartDataEntry(value: 0)
+    var sustainabilityDataEntry = PieChartDataEntry(value: 0)
+    var healthDataEntry = PieChartDataEntry(value: 0)
+    var chartEntries = [PieChartDataEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +29,8 @@ class ProfileViewController: UIViewController {
         userLabel.text = AppGlobalState.username
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,15 +40,43 @@ class ProfileViewController: UIViewController {
                 self.streakNumber.text = String(x)
             }
         }
-            
+        
         API.getUserInfo(completion: setStreak)
         self.fetchUserHistory()
+        
+        
+            
+        
     }
     
     func fetchUserHistory() {
         API.getArticlesFeed(type: "history", self.setArticlesHistory)
     }
     
+    func updateChartData() {
+        let chartDataSet = PieChartDataSet(entries: self.chartEntries as! [ChartDataEntry], label: nil)
+        let chartData = PieChartData(dataSet: chartDataSet)
+        
+        let colors = Array(GlobalColors.values)
+        print(colors)
+        
+        chartDataSet.colors = colors as! [NSUIColor]
+        
+        pieChartView.data = chartData
+    }
+    
+    func setUpPieChart() {
+        civilRightsDataEntry.value = Double(Article.getAllArticlesWith(category: "civil rights", list: self.articlesHistory).count)
+        
+        sustainabilityDataEntry.value = Double(Article.getAllArticlesWith(category: "sustainability", list: self.articlesHistory).count)
+        
+        healthDataEntry.value = Double(Article.getAllArticlesWith(category: "health", list: self.articlesHistory).count)
+        
+        pieChartView.chartDescription?.text = "Category Breakdown"
+        chartEntries = [civilRightsDataEntry, sustainabilityDataEntry, healthDataEntry]
+        
+        updateChartData()
+    }
 
     /*
     // MARK: - Navigation
@@ -83,6 +120,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         self.articlesHistory = articlesHistory
         DispatchQueue.main.sync {
             self.tableView.reloadData()
+            self.setUpPieChart()
         }
     }
 }
