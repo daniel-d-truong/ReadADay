@@ -62,8 +62,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="66" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-AX-RMw">
-                                <rect key="frame" x="185" y="212" width="45" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="66" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-AX-RMw">
+                                <rect key="frame" x="0.0" y="212" width="414" height="47"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -128,13 +128,13 @@
                             <constraint firstItem="6eA-BG-tTz" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="5JQ-rD-Xrb"/>
                             <constraint firstItem="6eA-BG-tTz" firstAttribute="top" secondItem="S2a-AX-RMw" secondAttribute="bottom" constant="68" id="6Mt-OL-0QO"/>
                             <constraint firstItem="fWo-Hb-l71" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" constant="169" id="9cc-7Q-mBq"/>
-                            <constraint firstItem="S2a-AX-RMw" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" constant="185" id="AMZ-F8-hci"/>
+                            <constraint firstItem="S2a-AX-RMw" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="AMZ-F8-hci"/>
                             <constraint firstItem="y4c-gC-Mzx" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" constant="119" id="BUI-za-uPc"/>
                             <constraint firstItem="y4c-gC-Mzx" firstAttribute="top" secondItem="fID-wo-MuL" secondAttribute="top" constant="22" id="KQ8-gE-dzB"/>
                             <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="6eA-BG-tTz" secondAttribute="trailing" id="Mm7-dp-bCl"/>
                             <constraint firstItem="HfY-SU-pRr" firstAttribute="trailing" secondItem="fID-wo-MuL" secondAttribute="trailing" id="NV6-Qr-LV0"/>
                             <constraint firstItem="HfY-SU-pRr" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="QhN-Yp-lIV"/>
-                            <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="S2a-AX-RMw" secondAttribute="trailing" constant="184" id="UjU-xw-aKl"/>
+                            <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="S2a-AX-RMw" secondAttribute="trailing" id="UjU-xw-aKl"/>
                             <constraint firstItem="fID-wo-MuL" firstAttribute="bottom" secondItem="HfY-SU-pRr" secondAttribute="bottom" constant="16" id="a2u-Vd-8Db"/>
                             <constraint firstItem="S2a-AX-RMw" firstAttribute="top" secondItem="y4c-gC-Mzx" secondAttribute="bottom" constant="78" id="e3e-PK-bjV"/>
                             <constraint firstItem="fWo-Hb-l71" firstAttribute="top" secondItem="6eA-BG-tTz" secondAttribute="bottom" constant="60" id="hjK-3q-aM6"/>
