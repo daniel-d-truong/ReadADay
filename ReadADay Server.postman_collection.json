@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "b1e9a563-4166-41bf-948f-6d46149e41aa",
+		"name": "ReadADay Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/articles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8000/articles",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/articles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/javascript"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"URL\": \"https://example.com/\",\n    \"Username\": 123\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/articles",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/t-mavavr/info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/javascript"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/users/t-mavavr/info",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"t-mavavr",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/t-mavavr/readArticles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/javascript"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/users/t-mavavr/readArticles",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"t-mavavr",
+						"readArticles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/t-mavavr/readArticles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/javascript"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID\": 12345\n}\n"
+				},
+				"url": {
+					"raw": "localhost:8000/users/t-mavavr/readArticles",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"t-mavavr",
+						"readArticles"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
