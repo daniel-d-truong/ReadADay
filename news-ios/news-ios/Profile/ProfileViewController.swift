@@ -43,6 +43,7 @@ class ProfileViewController: UIViewController {
         self.fetchUserHistory()
         
         pieChartView.sizeToFit()
+        pieChartView.backgroundColor = UIColor.blue
     }
     
     func fetchUserHistory() {
@@ -65,12 +66,13 @@ class ProfileViewController: UIViewController {
         // animate
         pieChartView.animate(xAxisDuration: 2, easingOption: .easeOutBack)
         pieChartView.animate(yAxisDuration: 2, easingOption: .easeOutBack)
+
         
         civilRightsDataEntry.value = Double(Article.getAllArticlesWith(category: "civil rights", list: self.articlesHistory).count)
         civilRightsDataEntry.label = "Civil Rights"
         
         sustainabilityDataEntry.value = Double(Article.getAllArticlesWith(category: "sustainability", list: self.articlesHistory).count)
-        sustainabilityDataEntry.label = "Substainability"
+        sustainabilityDataEntry.label = "Sustainability"
         
         healthDataEntry.value = Double(Article.getAllArticlesWith(category: "health", list: self.articlesHistory).count)
         healthDataEntry.label = "Health"
