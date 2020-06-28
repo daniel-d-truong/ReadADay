@@ -1,7 +1,6 @@
 {
   "name": "news-server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,6 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "apify-cli": "^0.6.1",
+    "express": "^4.17.1",
+    "got": "^10.4.0",
+    "jsdom": "^16.2.2"
+  },
+  "keywords": [],
+  "description": ""
 }
