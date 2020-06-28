@@ -1,7 +1,7 @@
 module.exports = Object.freeze({
     CATEGORIES : {
 		"sustainability": ["sustainability", "environment", "biodegradable", "climate", "emissions", "environmental"],
-		"civil rights": ["race", "gender", "blm", "black lives matter", "wage gap", "people of color", "pay gap", "male worker", "female worker", "child care", "police brutality", "african american", "racial justice", "civil rights"],
+		"civil rights": ["race", "gender", "blm", "black lives", "wage gap", "people of color", "pay gap", "male worker", "female worker", "child care", "police brutality", "african american", "racial justice", "civil rights", "george floyd"],
 		"health": ["coronavirus", "corona", "covid", "health", "cure", "pandemic", "virus"],
 	},
 

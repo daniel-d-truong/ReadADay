@@ -104,14 +104,15 @@ methods.categorize_article = async function (url) {
 }
 
 // for (var url of consts.ARTICLE_URLS) {
-//     // let url = 'https://www.nytimes.com/2020/06/27/us/politics/trump-biden-protests-polling.html';
-//     methods.categorize_article(url).then(category => {
-//         console.log(category.toUpperCase() + "\n");
-//         return category;
-//     }).catch(err => {
-//         console.log("n/a");
-//         return "";
-//     })
+    // let url = 'https://www.nytimes.com/2020/06/27/us/politics/black-trans-lives-matter.html';
+    // let url = 'https://www.wsj.com/amp/articles/masks-could-help-stop-coronavirus-so-why-are-they-still-controversial-11593336601';
+    // methods.categorize_article(url).then(category => {
+    //     console.log(category.toUpperCase() + "\n");
+    //     return category;
+    // }).catch(err => {
+    //     console.log("n/a");
+    //     return "";
+    // })
 // }
 
 module.exports = methods;
