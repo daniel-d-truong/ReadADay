@@ -10,7 +10,7 @@ exports.selectArticlesAll = () => runSelectQuery(`SELECT * FROM Articles`);
 //  Insert Queries
 //
 exports.insertReadArticlesEntry = (user, article, date) => runInsertQuery(`INSERT INTO ReadArticles(ArticleID, DateRead, Username) VALUES (${article}, ${date}, '${user}')`);
-exports.insertArticlesEntry = (title, articleURL, imageURL, date, category) => runInsertQuery(`INSERT INTO Articles(Title, ArticleURL, ImageURL, ArticleDate, Category) VALUES (${title}, ${articleURL}, ${imageURL}, ${date}, ${category})`);
+exports.insertArticlesEntry = (title, articleURL, imageURL, date, category) => runInsertQuery(`INSERT INTO Articles(Title, ArticleURL, ImageURL, ArticleDate, Category) VALUES ('${title}', '${articleURL}', '${imageURL}', ${date}, '${category}')`);
 
 //
 //  Database Code
@@ -39,8 +39,6 @@ const runSelectQuery = (query) => {
 				reject(err.message);
 				return;
 			}
-
-			console.log("Getting User Information...");
 
 			let arr = [];
 			const request = new Request(
@@ -79,8 +77,6 @@ const runInsertQuery = (query) => {
 				reject(err.message);
 				return;
 			}
-
-			console.log("Getting User Information...");
 
 			const request = new Request(
 				query,
