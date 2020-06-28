@@ -82,9 +82,9 @@ methods.scrape_nyt = async function (sectionURL) {
   	return res;
 }*/
 
-// const url= 'https://medium.com/@solenerauturier/sustainable-ethical-fashion-glossary-cef252976abb';
+// const url= 'https://www.nytimes.com/2019/06/16/smarter-living/the-workplace-still-isnt-equal-for-women-heres-some-advice-to-navigate-it.html';
 // methods.web_scrape(url).then(res => {
-// 	console.log(res[0]);
+// 	console.log(res);
 // })
 
 // methods.article_info('https://www.nytimes.com/2020/06/27/us/politics/trump-biden-protests-polling.html').then(res => {

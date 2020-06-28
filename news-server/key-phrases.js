@@ -53,7 +53,7 @@ let get_key_phrases = function (documents) {
                 let body_ = JSON.parse(body);
                 let phrases = body_.documents[0].keyPhrases;
                 let extras = body_.documents[1].keyPhrases;
-                // console.log(phrases.concat(extras))
+                console.log(phrases.concat(extras))
                 resolve(phrases.concat(extras));
                 // console.log(phrases)
                 // resolve(phrases);
@@ -82,13 +82,19 @@ methods.categorize_article = async function (url) {
     };
 
     let keyPhrases = await get_key_phrases(documents);
+    let matches = 0;
     for (var phrase of keyPhrases) {
         for (var key in consts.CATEGORIES) {
             if (consts.CATEGORIES.hasOwnProperty(key)) { 
                 for (var word of consts.CATEGORIES[key]) {
                     if (phrase.toLowerCase().includes(word)) {
-                        console.log("---category match! phrase=" + phrase + "\n    article=" + mainTitle);
-                        return key;
+                        matches += 1;
+                        console.log("---category match! phrase=" + phrase);
+                        if (matches >= 3) {
+                            console.log(mainTitle);
+                            return key;
+                        }
+                        
                     }
                 }
             }
@@ -98,7 +104,8 @@ methods.categorize_article = async function (url) {
 }
 
 // for (var url of consts.ARTICLE_URLS) {
-//     categorize_article(url).then(category => {
+//     // let url = 'https://www.nytimes.com/2020/06/27/us/politics/trump-biden-protests-polling.html';
+//     methods.categorize_article(url).then(category => {
 //         console.log(category.toUpperCase() + "\n");
 //         return category;
 //     }).catch(err => {

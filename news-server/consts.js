@@ -1,8 +1,8 @@
 module.exports = Object.freeze({
     CATEGORIES : {
 		"sustainability": ["sustainability", "environment", "biodegradable", "climate", "emissions"],
-		"civil rights": ["race", "gender", "blm", "black lives matter", "wage gap", "people of color", "women"],
-		"health": ["coronavirus", "corona", "covid", "health", "cure"],
+		"civil rights": ["race", "gender", "blm", "black lives matter", "wage gap", "people of color", "pay gap", "male worker", "female worker", "child care", "police brutality", "african american", "racial justice", "civil rights"],
+		"health": ["coronavirus", "corona", "covid", "health", "cure", "pandemic", "virus"],
 	},
 
 	ARTICLE_URLS : [
@@ -17,6 +17,6 @@ module.exports = Object.freeze({
 		// health
 		"https://www.nytimes.com/2020/06/27/us/coronavirus-houston-texas.html",
 		"https://www.nytimes.com/2020/06/27/health/coronavirus-antibodies-asymptomatic.html",
-		"https://www.nytimes.com/2020/06/27/health/heart-disease-gene-editing.html"
+		"https://www.theatlantic.com/ideas/archive/2020/06/virus-will-win/612946/"
 	]
 });
