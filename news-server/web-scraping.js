@@ -93,8 +93,3 @@ methods.scrape_nyt = async function (sectionURL) {
 
 
 module.exports = methods;
-
-
-
-
-

@@ -2,7 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const moment = require("moment");
 
-const { selectArticlesAll, selectArticlesForUser, selectReadArticlesTimesForUser, insertArticlesEntry, insertReadArticlesEntry } = require("./sql-connection.js")
+const { selectArticlesAll, selectArticlesForUser, selectReadArticlesTimesForUser, insertArticlesEntry, insertReadArticlesEntry } = require("./sql-connection");
+const { article_info } = require("./web-scraping");
+const { categorize_article } = require("./key-phrases");
 
 const app = express();
 app.use(bodyParser.json({ strict: false, type: "*/*" }));
@@ -96,18 +98,32 @@ app.listen(serverPort, () => console.log(`Server started on port ${serverPort}!`
 //  Utilities
 //
 const getDataAboutArticle = async (url) => {
+    const [title, imageURL] = await article_info(url);
+    const category = await categorize_article(url);
+
     return {
-        title: "Some Title Here",
-        imageURL: "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
-        date: Date.now(),
-        category: "Education"
+        title,
+        imageURL,
+        category,
+        date: Date.now()
     };
 }
 
+const calculateStreak = (timestamps) => {/////////////////////////////////////////////////////////////////////////////////////////
+    timestamps = timestamps.map(t => t.DateRead / 1000);
+    timestamps.unshift(Date.now() / 1000);
 
+    const timestampDiffs = timestamps.slice(1).map((t, i) => timestamps[i] - t);
 
-const calculateStreak = (timestamps) => {
-    return 1;
+    for (let i = 1; i < timestampDiffs.length; i++) {
+        if (timestampDiffs[i] >= STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS * 60 * 60) {
+            const timeStreakStarted = moment.unix(timestamps[i - 1]);
+            console.log(timestamps[i - 1]);
+            console.log(timeStreakStarted);
+        }
+    }
+
+    return 4;
 }
 
 const formatArticles = (articles) => {

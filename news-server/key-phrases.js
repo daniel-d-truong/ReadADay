@@ -1,5 +1,7 @@
 'use strict';
 
+let methods = {};
+
 let https = require('https');
 let webscrp = require('./web-scraping.js');
 let consts = require('./consts.js');
@@ -66,7 +68,7 @@ let get_key_phrases = function (documents) {
     })
 }
 
-let categorize_article = async function (url) {
+methods.categorize_article = async function (url) {
     let res = await webscrp.web_scrape(url);
     let mainTitle = res[0];
     let titles = res[1].join(" ");
@@ -92,26 +94,17 @@ let categorize_article = async function (url) {
             }
         }
     }
-    return "fuck"
+    return ""
 }
 
-for (var url of consts.ARTICLE_URLS) {
-    categorize_article(url).then(category => {
-        console.log(category.toUpperCase() + "\n");
-        return category;
-    }).catch(err => {
-        console.log("n/a");
-        return "";
-    })
-}
+// for (var url of consts.ARTICLE_URLS) {
+//     categorize_article(url).then(category => {
+//         console.log(category.toUpperCase() + "\n");
+//         return category;
+//     }).catch(err => {
+//         console.log("n/a");
+//         return "";
+//     })
+// }
 
-
-
-
-
-
-
-
-
-
-
+module.exports = methods;
