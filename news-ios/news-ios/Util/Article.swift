@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Article {
     var url: String
@@ -23,7 +24,7 @@ class Article {
         self.id = id
     }
     
-    convenience init(_ dict: [String: String]) {
-        self.init(url: dict["URL"]!, title: dict["Title"]!, imageSrc: dict["ImageURL"]!, category: dict["Category"]!, id: dict["ID"]!)
+    convenience init(_ dict: JSON) {
+        self.init(url: dict["URL"].string!, title: dict["Title"].string!, imageSrc: dict["ImageURL"].string!, category: dict["Category"].string!, id: String(dict["ID"].int!))
     }
 }

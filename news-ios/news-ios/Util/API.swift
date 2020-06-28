@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 let backendURL = "http://localhost:8000";
 
 class APIFunctions {
+    
     // Private Init. DO NOT MAKE AN OBJECT FROM THIS
     init() {}
     
@@ -27,25 +29,39 @@ class APIFunctions {
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
         
-        
-        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
             // check if error took place
             if let error = error {
                 print("Error took place")
                 return
             }
-            
+                        
             if let response = response as? HTTPURLResponse {
                 print("Response HTTP status code: \(response.statusCode)")
             }
-            
-            // Convert Data to String
+                        
             if let data = data {
-                let someArray: [[String: String]] = []
-                let articlesList: [Article] = someArray.map{ Article($0) }
-                completion(articlesList)
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let jsonPod = JSON(json)
+                    let mainArray = jsonPod["Articles"]
+                    
+                    var arr: [Article] = []
+                    for dict in mainArray {
+                        arr.append(Article(dict.1))
+                    }
+                    
+                    completion(arr)
+                }
+                
+                catch {
+                    
+                }
             }
+
         }
+        task.resume()
     }
     
     func getArticlesHistory(_ completion: @escaping ((_ articlesList: [Article]) -> Void)) {
