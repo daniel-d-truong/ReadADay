@@ -55,7 +55,8 @@ class ProfileViewController: UIViewController {
         let chartDataSet = PieChartDataSet(entries: self.chartEntries as! [ChartDataEntry], label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
         
-        let colors = Array(GlobalColors.values)
+        
+        let colors = [GlobalColors["civil rights"], GlobalColors["sustainability"], GlobalColors["health"]]
         print(colors)
         
         chartDataSet.colors = colors as! [NSUIColor]
