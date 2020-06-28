@@ -33,15 +33,19 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell = tableView.dequeueReusableCell(withIdentifier: "FeedTableCell", for: indexPath) as! FeedTableViewCell
-        tableCell.setCell(article: self.articlesList[indexPath.row])
-        return tableCell
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: "FeedTableCell", for: indexPath) as? FeedTableViewCell
+        tableCell?.setCell(article: self.articlesList[indexPath.row])
+        return tableCell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let urlString = self.articlesList[indexPath.row].url
+        let article = self.articlesList[indexPath.row]
+        let urlString = article.url
         guard let url = URL(string: urlString) else { return }
         UIApplication.shared.open(url)
+        
+        // Give user credit for reading this article
+        API.postArticleUserRead(id: article.id, successCompletion: {}, failureCompletion: {})
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,7 +67,7 @@ class FeedTableViewController: UITableViewController {
             }
             
             else {
-                API.getArticlesFeed(self.setArticlesList)
+                API.getArticlesFeed(type: "feed", self.setArticlesList)
             }
             
             print(self.articlesList.count)
@@ -74,7 +78,9 @@ class FeedTableViewController: UITableViewController {
     
     func setArticlesList(_ articlesList: [Article]) {
         self.articlesList = articlesList
-        self.tableView.reloadData()
+        DispatchQueue.main.sync {
+            self.tableView.reloadData()
+        }
     }
 
     /**

@@ -22,16 +22,22 @@ class ProfileViewController: UIViewController {
         userLabel.text = AppGlobalState.username
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        self.fetchUserHistory()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         userLabel.text = AppGlobalState.username
+        func setStreak(_ x: Int) {
+            DispatchQueue.main.sync {
+                self.streakNumber.text = String(x)
+            }
+        }
+            
+        API.getUserInfo(completion: setStreak)
+        self.fetchUserHistory()
     }
     
     func fetchUserHistory() {
-        API.getArticlesHistory(self.setArticlesHistory)
+        API.getArticlesFeed(type: "history", self.setArticlesHistory)
     }
     
 
@@ -75,7 +81,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func setArticlesHistory(_ articlesHistory: [Article]) {
         self.articlesHistory = articlesHistory
-        print(self.articlesHistory)
-        self.tableView.reloadData()
+        DispatchQueue.main.sync {
+            self.tableView.reloadData()
+        }
     }
 }
