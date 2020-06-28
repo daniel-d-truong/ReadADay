@@ -1,4 +1,7 @@
+  
 const express = require("express");
+
+
 const bodyParser = require("body-parser");
 const moment = require("moment");
 
@@ -12,9 +15,39 @@ app.use(bodyParser.json({ strict: false, type: "*/*" }));
 const serverPort = 8000;
 const STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS = 36;
 
+const demoArticleData = {
+    "Articles": [
+        {
+            "ID": 12345,
+            "Title": "Some Title Here",
+            "URL": "https://example.com/",
+            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
+            "Date": "25 mins ago",
+            "Category": "health"
+        },
+        {
+            "ID": 67890,
+            "Title": "Some Title Here adsfffffffffffdf asdfffffffffffffff",
+            "URL": "https://example.org/",
+            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
+            "Date": "1 hour ago",
+            "Category": "sustainability"
+        },
+        {
+            "ID": 67895,
+            "Title": "Some Title Here",
+            "URL": "https://example.org/",
+            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
+            "Date": "1 hour ago",
+            "Category": "civil rights"
+        }
+    ]
+};
+
 //
 //  Articles Collection
 //
+
 app.get("/articles", async (request, response) => {
     console.log(`[REQUEST] GET /articles`)
     try {
@@ -41,9 +74,10 @@ app.post("/articles", async (request, response) => {
     }
 });
 
-// 
+// 
 //  Users Collection
 //
+
 app.get("/users/:username/info", async (request, response) => {
     console.log(`[REQUEST] GET /users/:username/info`)
     try {
@@ -91,6 +125,7 @@ app.post("/users/:username/readArticles", async (request, response) => {
 //
 //  Start Server
 //
+
 app.listen(serverPort, () => console.log(`Server started on port ${serverPort}!`));
 
 //
