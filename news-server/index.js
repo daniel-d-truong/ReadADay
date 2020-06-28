@@ -1,7 +1,4 @@
-  
 const express = require("express");
-
-
 const bodyParser = require("body-parser");
 const moment = require("moment");
 
@@ -15,52 +12,22 @@ app.use(bodyParser.json({ strict: false, type: "*/*" }));
 const serverPort = 8000;
 const STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS = 36;
 
-const demoArticleData = {
-    "Articles": [
-        {
-            "ID": 12345,
-            "Title": "Some Title Here",
-            "URL": "https://example.com/",
-            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
-            "Date": "25 mins ago",
-            "Category": "health"
-        },
-        {
-            "ID": 67890,
-            "Title": "Some Title Here adsfffffffffffdf asdfffffffffffffff",
-            "URL": "https://example.org/",
-            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
-            "Date": "1 hour ago",
-            "Category": "sustainability"
-        },
-        {
-            "ID": 67895,
-            "Title": "Some Title Here",
-            "URL": "https://example.org/",
-            "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
-            "Date": "1 hour ago",
-            "Category": "civil rights"
-        }
-    ]
-};
-
 //
 //  Articles Collection
 //
-
 app.get("/articles", async (request, response) => {
     console.log(`[REQUEST] GET /articles`)
     try {
         response.send({
             Articles: formatArticles(await selectArticlesAll())
         });
-    } catch(e) {
+    } catch (e) {
         console.error(e);
         response.status(500).end();
     }
 });
 
-app.post("/articles", async (request, response) => { 
+app.post("/articles", async (request, response) => {
     console.log(`[REQUEST] POST /articles`)
     try {
         const { URL: articleURL, Username: username } = request.body;
@@ -74,10 +41,9 @@ app.post("/articles", async (request, response) => {
     }
 });
 
-// 
+// 
 //  Users Collection
 //
-
 app.get("/users/:username/info", async (request, response) => {
     console.log(`[REQUEST] GET /users/:username/info`)
     try {
@@ -88,7 +54,7 @@ app.get("/users/:username/info", async (request, response) => {
         console.log(x);
 
         response.send({ StreakInDays: calculateStreak(x) });
-    } catch(e) {
+    } catch (e) {
         console.error(e);
         response.status(500).end();
     }
@@ -101,7 +67,7 @@ app.get("/users/:username/readArticles", async (request, response) => {
         response.send({
             Articles: formatArticles(await selectArticlesForUser(username))
         });
-    } catch(e) {
+    } catch (e) {
         console.error(e);
         response.status(500).end();
     }
@@ -110,10 +76,10 @@ app.get("/users/:username/readArticles", async (request, response) => {
 app.post("/users/:username/readArticles", async (request, response) => {
     console.log(`[REQUEST] POST /users/:username/readArticles`)
     try {
-        const {username} = request.params;
-        const {ID: articleID} = request.body;
+        const { username } = request.params;
+        const { ID: articleID } = request.body;
         const time = Date.now();
-        
+
         await insertReadArticlesEntry(username, articleID, time);
         response.send();
     } catch (e) {
@@ -125,7 +91,6 @@ app.post("/users/:username/readArticles", async (request, response) => {
 //
 //  Start Server
 //
-
 app.listen(serverPort, () => console.log(`Server started on port ${serverPort}!`));
 
 //
