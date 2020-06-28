@@ -27,6 +27,10 @@ class HistoryTableViewCell: UITableViewCell {
     func setCell(article: Article) {
         self.articleTitle.text = article.title
         self.articleCategory.text = article.category
+        
+        articleCategory.backgroundColor = GlobalColors[article.category] ?? UIColor.white
+        articleCategory.layer.cornerRadius = 15
+        articleCategory.layer.masksToBounds = true
     }
 
 }

@@ -14,6 +14,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var articleTitle: UILabel!
     @IBOutlet weak var articleTopic: UILabel!
     @IBOutlet weak var articleDate: UILabel!
+    @IBOutlet weak var categoryBG: UIView!
     
     var article: Article!
     
@@ -34,7 +35,10 @@ class FeedTableViewCell: UITableViewCell {
         articleTopic.text = article.category
         articleDate.text = article.date
         
-        self.backgroundColor = GlobalColors[article.category]!
+//        self.backgroundColor = GlobalColors[article.category] ?? UIColor.white
+        articleTopic.backgroundColor = GlobalColors[article.category] ?? UIColor.white
+        articleTopic.layer.cornerRadius = 15
+        articleTopic.layer.masksToBounds = true
     }
 
 }
