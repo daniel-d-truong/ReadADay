@@ -49,11 +49,7 @@ app.get("/users/:username/info", async (request, response) => {
     try {
         const { username } = request.params;
 
-        const x = await selectReadArticlesTimesForUser(username);
-
-        console.log(x);
-
-        response.send({ StreakInDays: calculateStreak(x) });
+        response.send({ StreakInDays: calculateStreak(await selectReadArticlesTimesForUser(username)) });
     } catch (e) {
         console.error(e);
         response.status(500).end();
@@ -115,21 +111,30 @@ const getDataAboutArticle = async (url) => {
     };
 }
 
-const calculateStreak = (timestamps) => {/////////////////////////////////////////////////////////////////////////////////////////
+const calculateStreak = (timestamps) => {
+    // Helper Function
+    const calculateDaysAgo = (ts) => Math.ceil(moment.duration(moment().diff(moment.unix(ts))).asDays());
+
+    // Quick Check
+    if(timestamps.length === 0) {
+        return 0;
+    }
+
+    // Calculate Differences Between Timestamps
     timestamps = timestamps.map(t => t.DateRead / 1000);
     timestamps.unshift(Date.now() / 1000);
+    const timestampDiffs = timestamps.slice(1).map((ts, i) => timestamps[i] - ts);
 
-    const timestampDiffs = timestamps.slice(1).map((t, i) => timestamps[i] - t);
-
+    // Check for when Streak First Broken
     for (let i = 1; i < timestampDiffs.length; i++) {
         if (timestampDiffs[i] >= STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS * 60 * 60) {
-            const timeStreakStarted = moment.unix(timestamps[i - 1]);
-            console.log(timestamps[i - 1]);
-            console.log(timeStreakStarted);
+            // Streak Broken: Streak Exists Since timestamps[i]
+            return calculateDaysAgo(timestamps[i]);
         }
     }
 
-    return 4;
+    // Streak Never Broken: Streak Exists Since First Timestamp
+    return calculateDaysAgo(timestamps[timestamps.length - 1]);
 }
 
 const formatArticles = (articles) => {
