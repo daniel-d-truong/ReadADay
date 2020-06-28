@@ -53,7 +53,13 @@ methods.article_info = async function (url) {
 
 	const dom = new JSDOM(response.body);
 	let title = dom.window.document.querySelector('title').textContent;
-	let imgsrc = dom.window.document.querySelector('img[src^="http"]').getAttribute("src");
+	let img = dom.window.document.querySelector('img[src^="http"]');
+	let imgsrc = 'https://cdn1.iconfinder.com/data/icons/office-1/128/4-512.png';
+	if (img != null) {
+		imgsrc = img.getAttribute("src");
+	}
+
+	console.log(imgsrc);
 	// let datetime = dom.window.document.querySelector('time').getAttribute("datetime");
 
   	const res = [title, imgsrc];
@@ -87,7 +93,7 @@ methods.scrape_nyt = async function (sectionURL) {
 // 	console.log(res);
 // })
 
-// methods.article_info('https://www.nytimes.com/2020/06/27/us/politics/trump-biden-protests-polling.html').then(res => {
+// methods.article_info('https://www.wsj.com/articles/masks-could-help-stop-coronavirus-so-why-are-they-still-controversial-11593336601').then(res => {
 // 	console.log(res);
 // });
 
