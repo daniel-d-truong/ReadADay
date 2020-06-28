@@ -69,13 +69,13 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Streak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4c-gC-Mzx">
                                 <rect key="frame" x="0.0" y="110" width="414" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="t-datru" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eA-BG-tTz">
                                 <rect key="frame" x="0.0" y="367" width="414" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -83,9 +83,9 @@
                                 <rect key="frame" x="0.0" y="134" width="414" height="233"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-Hb-l71">
-                                <rect key="frame" x="169" y="408" width="76" height="28"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-Hb-l71">
+                                <rect key="frame" x="0.0" y="408" width="414" height="28"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -107,13 +107,13 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnf-ra-M4a">
                                                     <rect key="frame" x="20" y="11" width="354" height="24"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKq-MK-5mG">
                                                     <rect key="frame" x="20" y="60" width="194" height="21"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -136,8 +136,8 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-AX-RMw">
-                                <rect key="frame" x="0.0" y="169" width="414" height="0.0"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <rect key="frame" x="0.0" y="164" width="414" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -145,11 +145,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6eA-BG-tTz" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="5JQ-rD-Xrb"/>
-                            <constraint firstItem="fWo-Hb-l71" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" constant="169" id="9cc-7Q-mBq"/>
+                            <constraint firstItem="fWo-Hb-l71" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="9cc-7Q-mBq"/>
                             <constraint firstItem="y4c-gC-Mzx" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="BUI-za-uPc"/>
                             <constraint firstItem="S2a-AX-RMw" firstAttribute="trailing" secondItem="fID-wo-MuL" secondAttribute="trailing" id="F6I-6g-rd1"/>
                             <constraint firstItem="y4c-gC-Mzx" firstAttribute="top" secondItem="fID-wo-MuL" secondAttribute="top" constant="22" id="KQ8-gE-dzB"/>
-                            <constraint firstItem="S2a-AX-RMw" firstAttribute="top" secondItem="y4c-gC-Mzx" secondAttribute="bottom" constant="35" id="KlE-xJ-XJD"/>
+                            <constraint firstItem="S2a-AX-RMw" firstAttribute="top" secondItem="y4c-gC-Mzx" secondAttribute="bottom" constant="30" id="KlE-xJ-XJD"/>
                             <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="6eA-BG-tTz" secondAttribute="trailing" id="Mm7-dp-bCl"/>
                             <constraint firstItem="HfY-SU-pRr" firstAttribute="trailing" secondItem="fID-wo-MuL" secondAttribute="trailing" id="NV6-Qr-LV0"/>
                             <constraint firstItem="jcX-W2-INi" firstAttribute="top" secondItem="y4c-gC-Mzx" secondAttribute="bottom" id="Qci-Hh-gem"/>
@@ -161,7 +161,7 @@
                             <constraint firstItem="jcX-W2-INi" firstAttribute="leading" secondItem="fID-wo-MuL" secondAttribute="leading" id="ig7-yv-OC8"/>
                             <constraint firstItem="jcX-W2-INi" firstAttribute="top" secondItem="y4c-gC-Mzx" secondAttribute="bottom" id="kL1-Fb-mj7"/>
                             <constraint firstItem="6eA-BG-tTz" firstAttribute="top" secondItem="jcX-W2-INi" secondAttribute="bottom" id="kZK-9A-MfL"/>
-                            <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="fWo-Hb-l71" secondAttribute="trailing" constant="169" id="lLf-4b-qnS"/>
+                            <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="fWo-Hb-l71" secondAttribute="trailing" id="lLf-4b-qnS"/>
                             <constraint firstItem="fID-wo-MuL" firstAttribute="trailing" secondItem="y4c-gC-Mzx" secondAttribute="trailing" id="mec-VF-hLK"/>
                             <constraint firstItem="HfY-SU-pRr" firstAttribute="top" secondItem="fWo-Hb-l71" secondAttribute="bottom" constant="17" id="vMc-c8-lM8"/>
                         </constraints>
