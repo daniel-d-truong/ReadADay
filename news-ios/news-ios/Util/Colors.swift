@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let GlobalColors = [
-    "civil rights": UIColor(hex: "#f5a31acc"),
-    "sustainability": UIColor(hex: "#79d70fcc"),
-    "health": UIColor(hex: "#d32626cc")
+    "civil rights": UIColor(hex: "#f5a31acc")!,
+    "sustainability": UIColor(hex: "#79d70fcc")!,
+    "health": UIColor(hex: "#d32626cc")!
 ]
