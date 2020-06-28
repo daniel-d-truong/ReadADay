@@ -78,7 +78,9 @@ func displaySubmitArticle(controller: UIViewController, completion: @escaping ((
             preferredStyle: .alert)
         
         controllerAlert.addAction(UIAlertAction(title: "Sounds good", style: .default))
-        controller.present(controllerAlert, animated: true, completion: completion)
+        DispatchQueue.main.sync {
+            controller.present(controllerAlert, animated: true, completion: completion)
+        }
     }
     
     func failureCompletion() {
@@ -88,7 +90,9 @@ func displaySubmitArticle(controller: UIViewController, completion: @escaping ((
             preferredStyle: .alert)
         
         controllerAlert.addAction(UIAlertAction(title: "Sounds good", style: .default))
-        controller.present(controllerAlert, animated: true, completion: completion)
+        DispatchQueue.main.sync {
+            controller.present(controllerAlert, animated: true, completion: completion)
+        }
     }
 
     // 3.
