@@ -11,6 +11,10 @@
 		CBEDDE7724A7FFA400252979 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE7624A7FFA400252979 /* MainTabBarController.swift */; };
 		CBEDDE7924A7FFE200252979 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE7824A7FFE200252979 /* ProfileViewController.swift */; };
 		CBEDDE7C24A801D600252979 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE7B24A801D600252979 /* FeedTableViewCell.swift */; };
+		CBEDDE8324A810EA00252979 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE8224A810EA00252979 /* Article.swift */; };
+		CBEDDE8624A8131000252979 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE8524A8131000252979 /* Extensions.swift */; };
+		CBEDDE8824A81D7D00252979 /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE8724A81D7D00252979 /* GlobalState.swift */; };
+		CBEDDE8A24A81DD500252979 /* AlertActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE8924A81DD500252979 /* AlertActions.swift */; };
 		CBFED65B24A7EFEA0097B2A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65A24A7EFEA0097B2A2 /* AppDelegate.swift */; };
 		CBFED65D24A7EFEA0097B2A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65C24A7EFEA0097B2A2 /* SceneDelegate.swift */; };
 		CBFED65F24A7EFEA0097B2A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65E24A7EFEA0097B2A2 /* ViewController.swift */; };
@@ -43,6 +47,10 @@
 		CBEDDE7624A7FFA400252979 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CBEDDE7824A7FFE200252979 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CBEDDE7B24A801D600252979 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		CBEDDE8224A810EA00252979 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		CBEDDE8524A8131000252979 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CBEDDE8724A81D7D00252979 /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
+		CBEDDE8924A81DD500252979 /* AlertActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActions.swift; sourceTree = "<group>"; };
 		CBFED65724A7EFEA0097B2A2 /* news-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "news-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFED65A24A7EFEA0097B2A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBFED65C24A7EFEA0097B2A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +101,17 @@
 			path = FeedTable;
 			sourceTree = "<group>";
 		};
+		CBEDDE8424A812F800252979 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CBEDDE8224A810EA00252979 /* Article.swift */,
+				CBEDDE8524A8131000252979 /* Extensions.swift */,
+				CBEDDE8724A81D7D00252979 /* GlobalState.swift */,
+				CBEDDE8924A81DD500252979 /* AlertActions.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		CBFED64E24A7EFEA0097B2A2 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +135,7 @@
 		CBFED65924A7EFEA0097B2A2 /* news-ios */ = {
 			isa = PBXGroup;
 			children = (
+				CBEDDE8424A812F800252979 /* Util */,
 				CBEDDE7A24A801C100252979 /* FeedTable */,
 				CBFED65A24A7EFEA0097B2A2 /* AppDelegate.swift */,
 				CBFED65C24A7EFEA0097B2A2 /* SceneDelegate.swift */,
@@ -279,10 +299,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBEDDE8A24A81DD500252979 /* AlertActions.swift in Sources */,
 				CBEDDE7924A7FFE200252979 /* ProfileViewController.swift in Sources */,
+				CBEDDE8624A8131000252979 /* Extensions.swift in Sources */,
 				CBFED65F24A7EFEA0097B2A2 /* ViewController.swift in Sources */,
 				CBEDDE7C24A801D600252979 /* FeedTableViewCell.swift in Sources */,
 				CBFED65B24A7EFEA0097B2A2 /* AppDelegate.swift in Sources */,
+				CBEDDE8324A810EA00252979 /* Article.swift in Sources */,
+				CBEDDE8824A81D7D00252979 /* GlobalState.swift in Sources */,
 				CBEDDE7724A7FFA400252979 /* MainTabBarController.swift in Sources */,
 				CBFED65D24A7EFEA0097B2A2 /* SceneDelegate.swift in Sources */,
 				CBEDDE7324A7FDC100252979 /* FeedTableViewController.swift in Sources */,

@@ -19,7 +19,10 @@ class ViewController: UIViewController {
     
     
     @IBAction func buttonOnClick(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabController") as! UITabBarController
+        print("clicked")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabController") as! MainTabBarController
+        print(vc)
+        print(self.navigationController)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
