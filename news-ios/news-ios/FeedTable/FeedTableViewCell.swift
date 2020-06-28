@@ -12,8 +12,8 @@ class FeedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var articleTitle: UILabel!
-    @IBOutlet weak var articleSource: UILabel!
     @IBOutlet weak var articleTopic: UILabel!
+    @IBOutlet weak var articleDate: UILabel!
     
     var article: Article!
     
@@ -31,8 +31,10 @@ class FeedTableViewCell: UITableViewCell {
     func setCell(article: Article) {
         articleImage.loadURL(url: URL(string: article.imageSrc)!)
         articleTitle.text = article.title
-        articleSource.text = article.url
         articleTopic.text = article.category
+        articleDate.text = article.date
+        
+        self.backgroundColor = GlobalColors[article.category]!
     }
 
 }

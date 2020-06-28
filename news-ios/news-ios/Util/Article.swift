@@ -29,4 +29,8 @@ class Article {
     convenience init(_ dict: JSON) {
         self.init(url: dict["URL"].string!, title: dict["Title"].string!, imageSrc: dict["ImageURL"].string!, category: dict["Category"].string!, id: dict["ID"].int!, date: dict["Date"].string!)
     }
+    
+    static func getAllArticlesWith(category: String, list: [Article]) -> [Article] {
+        return list.filter { $0.category == category }
+    }
 }
