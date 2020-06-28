@@ -2,19 +2,23 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const moment = require("moment");
 
-const { selectArticlesForUser, selectArticlesAll, insertReadArticlesEntry, insertArticlesEntry } = require("./sql-connection.js")
+const { selectArticlesAll, selectArticlesForUser, selectReadArticlesTimesForUser, insertArticlesEntry, insertReadArticlesEntry } = require("./sql-connection.js")
 
 const app = express();
 app.use(bodyParser.json({ strict: false, type: "*/*" }));
 
 const serverPort = 8000;
+const STREAK_MAXIMUM_ALLOWED_HOURS_BETWEEN_READ_EVENTS = 36;
 
 //
 //  Articles Collection
 //
 app.get("/articles", async (request, response) => {
+    console.log(`>>> GET "/articles"`)
     try {
-        response.send(formatArticles(await selectArticlesAll()));
+        response.send({
+            Articles: formatArticles(await selectArticlesAll())
+        });
     } catch(e) {
         console.error(e);
         response.status(500).end();
@@ -22,6 +26,7 @@ app.get("/articles", async (request, response) => {
 });
 
 app.post("/articles", async (request, response) => { 
+    console.log(`>>> POST "/articles"`)
     try {
         const { URL: articleURL, Username: username } = request.body;
         const { title, imageURL, date, category } = await getDataAboutArticle(articleURL);
@@ -38,9 +43,15 @@ app.post("/articles", async (request, response) => {
 //  Users Collection
 //
 app.get("/users/:username/info", async (request, response) => {
+    console.log(`>>> GET "/users/:username/info"`)
     try {
         const { username } = request.params;
-        response.send({ StreakInDays: calculateStreak(await selectArticlesForUser(username)) });
+
+        const x = await selectReadArticlesTimesForUser(username);
+
+        console.log(x);
+
+        response.send({ StreakInDays: calculateStreak(x) });
     } catch(e) {
         console.error(e);
         response.status(500).end();
@@ -48,9 +59,12 @@ app.get("/users/:username/info", async (request, response) => {
 });
 
 app.get("/users/:username/readArticles", async (request, response) => {
+    console.log(`>>> GET "/users/:username/readArticles"`)
     try {
         const { username } = request.params;
-        response.send(formatArticles(await selectArticlesForUser(username)));
+        response.send({
+            Articles: formatArticles(await selectArticlesForUser(username))
+        });
     } catch(e) {
         console.error(e);
         response.status(500).end();
@@ -58,6 +72,7 @@ app.get("/users/:username/readArticles", async (request, response) => {
 });
 
 app.post("/users/:username/readArticles", async (request, response) => {
+    console.log(`>>> POST "/users/:username/readArticles"`)
     try {
         const {username} = request.params;
         const {ID: articleID} = request.body;
@@ -89,8 +104,10 @@ const getDataAboutArticle = async (url) => {
     };
 }
 
+
+
 const calculateStreak = (timestamps) => {
-    return 0;
+    return 1;
 }
 
 const formatArticles = (articles) => {
