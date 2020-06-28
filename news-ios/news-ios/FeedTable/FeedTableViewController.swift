@@ -63,7 +63,7 @@ class FeedTableViewController: UITableViewController {
             }
             
             else {
-                API.getArticlesFeed(self.setArticlesList)
+                API.getArticlesFeed(type: "feed", self.setArticlesList)
             }
             
             print(self.articlesList.count)
