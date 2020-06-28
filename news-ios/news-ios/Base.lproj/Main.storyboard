@@ -184,28 +184,32 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Posted From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yic-CS-rQk">
-                                            <rect key="frame" x="143" y="39" width="91" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yic-CS-rQk">
+                                            <rect key="frame" x="143" y="39" width="251" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Article Topic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqh-UI-5jd">
-                                            <rect key="frame" x="298" y="103" width="96" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Topic" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqh-UI-5jd">
+                                            <rect key="frame" x="143" y="103" width="251" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="yic-CS-rQk" firstAttribute="top" secondItem="ChJ-Yy-0bT" secondAttribute="bottom" constant="7.5" id="FQM-mn-CNN"/>
                                         <constraint firstItem="REK-Vr-XOt" firstAttribute="top" secondItem="eFW-SI-ZTc" secondAttribute="top" constant="11" id="M3W-m4-xZt"/>
                                         <constraint firstAttribute="bottom" secondItem="REK-Vr-XOt" secondAttribute="bottom" constant="11" id="M6g-vn-b67"/>
                                         <constraint firstItem="ChJ-Yy-0bT" firstAttribute="top" secondItem="eFW-SI-ZTc" secondAttribute="topMargin" id="Nvo-IB-gW2"/>
+                                        <constraint firstItem="Fqh-UI-5jd" firstAttribute="trailing" secondItem="eFW-SI-ZTc" secondAttribute="trailingMargin" id="TaP-Wb-pYZ"/>
                                         <constraint firstItem="ChJ-Yy-0bT" firstAttribute="leading" secondItem="REK-Vr-XOt" secondAttribute="trailing" constant="8" id="XgD-H0-EZd"/>
+                                        <constraint firstItem="yic-CS-rQk" firstAttribute="leading" secondItem="REK-Vr-XOt" secondAttribute="trailing" constant="8" id="eU4-M9-fCR"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yic-CS-rQk" secondAttribute="trailing" id="ei8-jm-dXP"/>
                                         <constraint firstItem="ChJ-Yy-0bT" firstAttribute="trailing" secondItem="eFW-SI-ZTc" secondAttribute="trailingMargin" id="lgj-cs-Uku"/>
+                                        <constraint firstItem="Fqh-UI-5jd" firstAttribute="top" secondItem="yic-CS-rQk" secondAttribute="bottom" constant="46" id="yVr-DR-MPT"/>
                                         <constraint firstItem="REK-Vr-XOt" firstAttribute="leading" secondItem="eFW-SI-ZTc" secondAttribute="leading" constant="14" id="ybR-Km-Kiw"/>
+                                        <constraint firstItem="Fqh-UI-5jd" firstAttribute="leading" secondItem="REK-Vr-XOt" secondAttribute="trailing" constant="8" id="z9x-wC-ng5"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -228,7 +232,11 @@
                                     <action selector="loginOnClick:" destination="RZY-G2-1su" id="W6x-4v-El5"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Add" id="cTA-JQ-hB1"/>
+                            <barButtonItem title="Add" id="cTA-JQ-hB1">
+                                <connections>
+                                    <action selector="addOnClick:" destination="RZY-G2-1su" id="3Gh-eY-gP0"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

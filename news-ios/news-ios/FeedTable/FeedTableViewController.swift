@@ -84,5 +84,10 @@ class FeedTableViewController: UITableViewController {
         displayLoginAlert(controller: self, completion: fetchFromBackend)
     }
     
+    // Add Section
+    @IBAction func addOnClick(_ sender: Any) {
+        displaySubmitArticle(controller: self, completion: {})
+    }
+    
     
 }

@@ -31,6 +31,10 @@ class APIFunctions {
         
         completion(articlesList)
     }
+    
+    func submitArticle(articleURL: String, _ successCompletion: @escaping (() -> Void), _ failureCompletion: @escaping (() -> Void)) {
+        successCompletion()
+    }
 }
 
 let API = APIFunctions()
