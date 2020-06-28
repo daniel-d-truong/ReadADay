@@ -1,6 +1,18 @@
 const { Connection, Request } = require("tedious");
 
-// Create connection to database
+//
+//  Select Queries
+//
+const selectArticlesForUser = (user) => runSelectQuery(`SELECT * FROM ReadArticles WHERE Username='${user}'`);
+
+//
+//  Insert Queries
+//
+const insertReadArticlesEntry = (user, article, date) => runInsertQuery(`INSERT INTO ReadArticles(ArticleID, DateRead, Username) VALUES (${article}, ${date}, '${user}')`);
+
+//
+//  Database Code
+//
 const config = {
 	authentication: {
 		options: {
@@ -16,7 +28,7 @@ const config = {
 	}
 };
 
-function queryDBForUserArticles(user) {
+const runSelectQuery = (query) => {
 	return new Promise((resolve, reject) => {
 		// Attempt to connect and execute queries if connection goes through
 		const connection = new Connection(config);
@@ -30,7 +42,7 @@ function queryDBForUserArticles(user) {
 
 			let arr = [];
 			const request = new Request(
-				`SELECT * FROM ReadArticles WHERE Username='${user}'`,
+				query,
 				(err, rowCount) => {
 					if (err) {
 						reject(err);
@@ -57,7 +69,7 @@ function queryDBForUserArticles(user) {
 	});
 }
 
-function submitReadEntry(user, article, date) {
+const runInsertQuery = (query) => {
 	return new Promise((resolve, reject) => {
 		// Attempt to connect and execute queries if connection goes through
 		const connection = new Connection(config);
@@ -70,7 +82,7 @@ function submitReadEntry(user, article, date) {
 			console.log("Getting User Information...");
 
 			const request = new Request(
-				`INSERT INTO ReadArticles(ArticleID, DateRead, Username) VALUES (${article}, ${date}, '${user}')`,
+				query,
 				(err, rowCount) => {
 					if (err) {
 						reject(err.message);
@@ -88,7 +100,7 @@ function submitReadEntry(user, article, date) {
 }
 
 
-// submitReadEntry("joe", 11, 600).then(out => {
+// insertReadArticlesEntry("joe", 11, 600).then(out => {
 // 	console.log("Success!");
 // }).catch(err => {
 // 	console.log(err);
