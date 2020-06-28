@@ -44,6 +44,7 @@ class ProfileViewController: UIViewController {
         
         pieChartView.sizeToFit()
         pieChartView.backgroundColor = UIColor.blue
+
     }
     
     func fetchUserHistory() {
@@ -97,7 +98,7 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.articlesHistory.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -118,7 +119,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.articlesHistory.count
+        return 1
     }
     
     func setArticlesHistory(_ articlesHistory: [Article]) {
