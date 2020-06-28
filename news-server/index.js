@@ -80,10 +80,6 @@ app.listen(serverPort, () => console.log(`Server started on port ${serverPort}!`
 //
 //  Utilities
 //
-const calculateStreak = (readArticles) => {
-    return 0;
-}
-
 const getDataAboutArticle = async (url) => {
     return {
         title: "Some Title Here",
@@ -93,13 +89,19 @@ const getDataAboutArticle = async (url) => {
     };
 }
 
+const calculateStreak = (timestamps) => {
+    return 0;
+}
+
 const formatArticles = (articles) => {
     return articles.map(article => {
         article.Date = moment.unix(article.ArticleDate / 1000).fromNow();
-        article.URL = article.ArticleURL;
-
         delete article.ArticleDate;
+
+        article.URL = article.ArticleURL;
         delete article.ArticleURL;
+
+        article.Category = article.Category.toLowerCase();
 
         return article;
     });
