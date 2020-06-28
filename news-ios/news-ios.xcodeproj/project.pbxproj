@@ -15,6 +15,7 @@
 		CBEDDE8624A8131000252979 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE8524A8131000252979 /* Extensions.swift */; };
 		CBEDDE8824A81D7D00252979 /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE8724A81D7D00252979 /* GlobalState.swift */; };
 		CBEDDE8A24A81DD500252979 /* AlertActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE8924A81DD500252979 /* AlertActions.swift */; };
+		CBEDDE8C24A82CCA00252979 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEDDE8B24A82CCA00252979 /* API.swift */; };
 		CBFED65B24A7EFEA0097B2A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65A24A7EFEA0097B2A2 /* AppDelegate.swift */; };
 		CBFED65D24A7EFEA0097B2A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65C24A7EFEA0097B2A2 /* SceneDelegate.swift */; };
 		CBFED65F24A7EFEA0097B2A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFED65E24A7EFEA0097B2A2 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		CBEDDE8524A8131000252979 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CBEDDE8724A81D7D00252979 /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
 		CBEDDE8924A81DD500252979 /* AlertActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActions.swift; sourceTree = "<group>"; };
+		CBEDDE8B24A82CCA00252979 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CBFED65724A7EFEA0097B2A2 /* news-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "news-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFED65A24A7EFEA0097B2A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBFED65C24A7EFEA0097B2A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				CBEDDE8524A8131000252979 /* Extensions.swift */,
 				CBEDDE8724A81D7D00252979 /* GlobalState.swift */,
 				CBEDDE8924A81DD500252979 /* AlertActions.swift */,
+				CBEDDE8B24A82CCA00252979 /* API.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				CBEDDE8824A81D7D00252979 /* GlobalState.swift in Sources */,
 				CBEDDE7724A7FFA400252979 /* MainTabBarController.swift in Sources */,
 				CBFED65D24A7EFEA0097B2A2 /* SceneDelegate.swift in Sources */,
+				CBEDDE8C24A82CCA00252979 /* API.swift in Sources */,
 				CBEDDE7324A7FDC100252979 /* FeedTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

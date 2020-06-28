@@ -16,10 +16,6 @@ class FeedTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
         
         self.fetchFromBackend()
     }
@@ -40,6 +36,12 @@ class FeedTableViewController: UITableViewController {
         let tableCell = tableView.dequeueReusableCell(withIdentifier: "FeedTableCell", for: indexPath) as! FeedTableViewCell
         tableCell.setCell(article: self.articlesList[indexPath.row])
         return tableCell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let urlString = self.articlesList[indexPath.row].url
+        guard let url = URL(string: urlString) else { return }
+        UIApplication.shared.open(url)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
