@@ -14,7 +14,7 @@ const demoArticleData = {
             "URL": "https://example.com/",
             "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
             "Date": "25 mins ago",
-            "Category": "Education"
+            "Category": "civil rightsasdf"
         },
         {
             "ID": 67890,
@@ -22,7 +22,7 @@ const demoArticleData = {
             "URL": "https://example.org/",
             "ImageURL": "https://zdnet3.cbsistatic.com/hub/i/2019/02/12/745b7ed1-f19c-4718-ad0b-ae7cb7a14fe9/fac8658d4aa5c4bcbda293ab3e1a3d3b/microsoft.png",
             "Date": "1 hour ago",
-            "Category": "Sustainability"
+            "Category": "sustainability"
         }
     ]
 };
