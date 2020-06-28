@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
         self.fetchUserHistory()
         
         pieChartView.sizeToFit()
-        pieChartView.backgroundColor = UIColor.blue
+        pieChartView.tintColor = UIColor.systemBlue
 
     }
     
