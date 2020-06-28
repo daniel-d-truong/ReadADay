@@ -106,7 +106,7 @@ const getDataAboutArticle = async (url) => {
     const category = await categorize_article(url);
 
     return {
-        title,
+        title: title.trim(),
         imageURL,
         category,
         date: Date.now()
@@ -142,6 +142,9 @@ const calculateStreak = (timestamps) => {
 const formatArticles = (articles) => {
     return articles.map(article => {
         article.Date = moment.unix(article.ArticleDate / 1000).fromNow();
+        if(article.Date === "a few seconds ago") {
+            article.Date = "just now";
+        }
         delete article.ArticleDate;
 
         article.URL = article.ArticleURL;
