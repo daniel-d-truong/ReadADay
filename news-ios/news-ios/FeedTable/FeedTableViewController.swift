@@ -117,7 +117,6 @@ class FeedTableViewController: UITableViewController {
     
     // Add Section
     @IBAction func addOnClick(_ sender: Any) {
-        articlesList.append(Article(url: "idk", title: "idk", imageSrc: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", category: "health", id: 2534, date: "just now"))
-        displaySubmitArticle(controller: self, completion: self.tableView.reloadData)
+        displaySubmitArticle(controller: self, completion: fetchFromBackend)
     }
 }

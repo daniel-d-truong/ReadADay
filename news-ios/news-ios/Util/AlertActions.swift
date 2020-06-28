@@ -72,6 +72,7 @@ func displaySubmitArticle(controller: UIViewController, completion: @escaping ((
         preferredStyle: .alert)
     
     func successCompletion() {
+        
         showSuccessAlert(controller: controller, completion: completion)
     }
     
