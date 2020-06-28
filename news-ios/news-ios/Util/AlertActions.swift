@@ -72,27 +72,11 @@ func displaySubmitArticle(controller: UIViewController, completion: @escaping ((
         preferredStyle: .alert)
     
     func successCompletion() {
-        let controllerAlert = UIAlertController(
-            title: "Article Submitted",
-            message: "Article has been successfully submitted.",
-            preferredStyle: .alert)
-        
-        controllerAlert.addAction(UIAlertAction(title: "Sounds good", style: .default))
-        DispatchQueue.main.sync {
-            controller.present(controllerAlert, animated: true, completion: completion)
-        }
+        showSuccessAlert(controller: controller, completion: completion)
     }
     
     func failureCompletion() {
-        let controllerAlert = UIAlertController(
-            title: "Article Failed to Submit",
-            message: "Article has failed to submit.",
-            preferredStyle: .alert)
-        
-        controllerAlert.addAction(UIAlertAction(title: "Sounds good", style: .default))
-        DispatchQueue.main.sync {
-            controller.present(controllerAlert, animated: true, completion: completion)
-        }
+        showFailureAlert(controller: controller, completion: completion)
     }
 
     // 3.
@@ -118,4 +102,28 @@ func displaySubmitArticle(controller: UIViewController, completion: @escaping ((
     // 5.
     alertController.addAction(articleAction)
     controller.present(alertController, animated: true, completion: nil)
+}
+
+func showSuccessAlert(controller: UIViewController, completion: @escaping (() -> Void)) {
+    let controllerAlert = UIAlertController(
+        title: "Article Submitted",
+        message: "Article has been successfully submitted.",
+        preferredStyle: .alert)
+    
+    controllerAlert.addAction(UIAlertAction(title: "Sounds good", style: .default))
+    DispatchQueue.main.sync {
+        controller.present(controllerAlert, animated: true, completion: completion)
+    }
+}
+
+func showFailureAlert(controller: UIViewController, completion: @escaping (() -> Void)) {
+    let controllerAlert = UIAlertController(
+        title: "Article Failed to Submit",
+        message: "Article has failed to submit.",
+        preferredStyle: .alert)
+    
+    controllerAlert.addAction(UIAlertAction(title: "Sounds good", style: .default))
+    DispatchQueue.main.sync {
+        controller.present(controllerAlert, animated: true, completion: completion)
+    }
 }

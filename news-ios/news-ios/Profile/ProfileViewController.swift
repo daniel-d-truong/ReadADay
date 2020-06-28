@@ -26,7 +26,13 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         userLabel.text = AppGlobalState.username
-        print(AppGlobalState.username)
+        func setStreak(_ x: Int) {
+            DispatchQueue.main.sync {
+                self.streakNumber.text = String(x)
+            }
+        }
+            
+        API.getUserInfo(completion: setStreak)
         self.fetchUserHistory()
     }
     

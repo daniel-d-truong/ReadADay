@@ -39,9 +39,13 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let urlString = self.articlesList[indexPath.row].url
+        let article = self.articlesList[indexPath.row]
+        let urlString = article.url
         guard let url = URL(string: urlString) else { return }
         UIApplication.shared.open(url)
+        
+        // Give user credit for reading this article
+        API.postArticleUserRead(id: article.id, successCompletion: {}, failureCompletion: {})
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

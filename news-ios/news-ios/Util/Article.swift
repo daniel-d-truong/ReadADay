@@ -14,10 +14,10 @@ class Article {
     var title: String
     var imageSrc: String
     var category: String
-    var id: String
+    var id: Int
     var date: String
     
-    init(url: String, title: String, imageSrc: String, category: String, id: String, date: String) {
+    init(url: String, title: String, imageSrc: String, category: String, id: Int, date: String) {
         self.url = url
         self.title = title
         self.imageSrc = imageSrc
@@ -27,6 +27,6 @@ class Article {
     }
     
     convenience init(_ dict: JSON) {
-        self.init(url: dict["URL"].string!, title: dict["Title"].string!, imageSrc: dict["ImageURL"].string!, category: dict["Category"].string!, id: String(dict["ID"].int!), date: dict["Date"].string!)
+        self.init(url: dict["URL"].string!, title: dict["Title"].string!, imageSrc: dict["ImageURL"].string!, category: dict["Category"].string!, id: dict["ID"].int!, date: dict["Date"].string!)
     }
 }
