@@ -1,1 +1,1 @@
-web: node news-server/index.js
+web: npm run server
