@@ -1,0 +1,23 @@
+{
+  "name": "microsoft-news",
+  "version": "1.0.0",
+  "description": "## Inspiration While change for social good relies on action and voices from the younger generation, we often fall short due to performative activism and treating movements like fads. With ReadADay, we're striving to build a mindset of staying informed, starting discussions, and moving towards reform day by day.",
+  "main": "index.js",
+  "scripts": {
+    "test": "\\"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-d-truong/cloud-and-ai.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniel-d-truong/cloud-and-ai/issues"
+  },
+  "homepage": "https://github.com/daniel-d-truong/cloud-and-ai#readme",
+  "dependencies": {
+    "got": "^11.3.0",
+    "jsdom": "^16.2.2"
+  }
+}
