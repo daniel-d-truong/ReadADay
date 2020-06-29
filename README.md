@@ -1,5 +1,7 @@
 # ReadADay
 
+![App Image](docs/app.jpeg)
+
 ## Inspiration
 While change for social good relies on action and voices from the younger generation, we often fall short due to performative activism and treating movements like fads. With ReadADay, we're striving to build a mindset of staying informed, starting discussions, and moving towards reform day by day.
 
