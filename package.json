@@ -19,6 +19,6 @@
   "homepage": "https://github.com/daniel-d-truong/cloud-and-ai#readme",
   "dependencies": {
     "got": "^11.3.0",
-    "jsdom": "^16.2.2"
+    "jsdom": "^16.5.0"
   }
 }
